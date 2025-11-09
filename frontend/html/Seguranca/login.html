@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home-page' %}">Home-Page</a>
+        {% include 'Reviews/links.html' %}
+        {% include 'Games/links.html' %}
+        {% include 'Seguranca/links.html' %}
+    </nav>
+    <h1>Login</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table class='formulario'>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Entrar</button>
+    </form>
+    <p><a href="{% url 'Seguranca:password_reset' %}">Esqueceu a senha?</a></p>
+</body>
+</html>

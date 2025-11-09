@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Avaliação</title>
+    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home-page' %}">Home-Page</a>
+        {% include 'Reviews/links.html' %}
+        {% include 'Games/links.html' %}
+        {% include 'Seguranca/links.html' %}
+    </nav>
+
+    <h1>Atualizar Avaliação</h1>
+    
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+    
+    <form action="" method="POST">
+        <fieldset style="width: max-content;">
+            <legend>Editar Avaliação</legend>
+            {% csrf_token %}
+            <table class='form'>
+                {{ form.as_table }}
+            </table>
+            <button type="submit">Atualizar Avaliação</button>
+        </fieldset>
+    </form>
+</body>
+</html>
