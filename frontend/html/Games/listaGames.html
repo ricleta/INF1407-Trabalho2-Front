@@ -1,62 +1,33 @@
-{% load static %}
-{% load auth_extras %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todos os jogos</title>
-    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+    <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
     <nav>
-        <a href="{% url 'home-page' %}">Home-Page</a>
-        {% include 'Reviews/links.html' %}
-        {% include 'Games/links.html' %}
-        {% include 'Seguranca/links.html' %}
+        <a href="/">Home-Page</a>
+        <a href="/games/lista">Todos os jogos</a>
+        <!-- Dynamic links can be added here or in a shared script -->
+        <a href="/seguranca/login.html">Entrar</a>
+        <a href="/seguranca/signup.html">Cadastrar</a>
     </nav>
     <h1>Lista de Jogos</h1>
     <table>
-        <tr>
-            <th>Título</th>
-            <th>Plataformas</th>
-            <th>Descrição</th>
-            <th>Data</th>
-            <th>Desenvolvedor</th>
-        </tr>
-        {% for game in games %}
+        <thead>
             <tr>
-                <td>{{ game.title }}</td>
-                <td>{{ game.formatted_platforms }}</td>
-                <td>{{ game.description }}</td>
-                <td>{{ game.release_date|date:"d/m/Y" }}</td>
-                <td>{{ game.developer }}</td>
+                <th>Título</th>
+                <th>Plataformas</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Desenvolvedor</th>
             </tr>
-            {% if game.reviews.all %}
-                <tr>
-                    <td colspan="6">
-                        <table>
-                            <tr>
-                                <th>Usuário</th>
-                                <th>Nota</th>
-                                <th>Comentário</th>
-                            </tr>
-                            {% for review in game.reviews.all %}
-                                <tr>
-                                    <td>{{ review.user.username }}</td>
-                                    <td>{{ review.rating }}</td>
-                                    <td>{{ review.comment }}</td>
-                                </tr>
-                            {% endfor %}
-                        </table>
-                    </td>
-                </tr>
-            {% endif %}
-        {% empty %}
-            <tr>
-                <th colspan="5">Nenhum jogo cadastrado</th>
-            </tr>
-        {% endfor %}
+        </thead>
+        <tbody id="games-list-body"></tbody>
     </table>
+    <div id="loading-message"></div>
+    <script type="module" src="../../js/Games/listaGames.js"></script>
 </body>
 </html>

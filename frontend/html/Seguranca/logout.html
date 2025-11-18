@@ -1,19 +1,18 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sair</title>
-    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+    <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
     <h1>Sair</h1>
     <p>Tem certeza de que deseja sair?</p>
-    <form action="{% url 'Seguranca:actual-logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Confirmar Saída</button>
-        <a href="{% url 'home-page' %}">Cancelar</a>
-    </form>
+    
+    <button id="confirm-logout">Confirmar Saída</button>
+    <a href="/">Cancelar</a>
+    
+    <script src="../../js/Seguranca/logout.js"></script>
 </body>
 </html>

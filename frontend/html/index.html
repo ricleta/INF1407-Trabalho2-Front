@@ -1,10 +1,455 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tester - Complete Flow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .step-number {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+        }
+        input, select, textarea, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .config {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 4px solid #0c5460;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Testing test.ts</h1>
-    <script src="../js/Typescript/test.js"></script>
+    <h1>Django API Tester - Complete Flow</h1>
+    
+    <div class="config">
+        <h3>⚙️ Configuration</h3>
+        <label>Base API URL:</label>
+        <input type="text" id="baseUrl" value="https://organic-space-invention-4wvpj6q95q7hqwgw-8000.app.github.dev" placeholder="http://localhost:8000">
+        <small>Update this to match your Django server URL (without trailing slash)</small>
+    </div>
+
+    <!-- Step 1: Register User -->
+    <div class="section" id="step1">
+        <h2><span class="step-number">1</span>Register New User</h2>
+        <div class="info">Create a new user account that will be used to create games and reviews.</div>
+        
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" id="regUsername" placeholder="Username" value="testuser">
+        </div>
+        
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="regEmail" placeholder="Email" value="test@example.com">
+        </div>
+        
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="regPassword" placeholder="Password" value="testpass123">
+        </div>
+        
+        <button onclick="registerUser()">Register User</button>
+        <div id="registerResult"></div>
+    </div>
+
+    <!-- Step 2: Create Game -->
+    <div class="section disabled" id="step2">
+        <h2><span class="step-number">2</span>Create Game</h2>
+        <div class="info">Create a new game using the registered user as the developer.</div>
+        
+        <div class="form-group">
+            <label>Game Title:</label>
+            <input type="text" id="gameTitle" placeholder="Game Title" value="Epic Adventure Quest">
+        </div>
+        
+        <div class="form-group">
+            <label>Platforms (as string list):</label>
+            <input type="text" id="gamePlatforms" placeholder="Platforms" value="['PC', 'Xbox', 'PlayStation']">
+            <small>Format: ['PC', 'Xbox', 'PlayStation']</small>
+        </div>
+        
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea id="gameDescription" placeholder="Game Description" rows="3">An epic adventure game with stunning graphics and immersive gameplay. Battle enemies, solve puzzles, and explore vast worlds.</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Release Date:</label>
+            <input type="date" id="gameReleaseDate" value="2024-06-15">
+        </div>
+        
+        <div class="form-group">
+            <label>Developer ID:</label>
+            <input type="number" id="gameDeveloper" placeholder="Developer User ID" readonly>
+            <small>Auto-filled from Step 1</small>
+        </div>
+        
+        <button onclick="createGame()">Create Game</button>
+        <div id="gameResult"></div>
+    </div>
+
+    <!-- Step 3: Create Review -->
+    <div class="section disabled" id="step3">
+        <h2><span class="step-number">3</span>Create Review</h2>
+        <div class="info">Create a review for the game we just created.</div>
+        
+        <div class="form-group">
+            <label>Game ID:</label>
+            <input type="number" id="reviewGameId" placeholder="Game ID" readonly>
+            <small>Auto-filled from Step 2</small>
+        </div>
+        
+        <div class="form-group">
+            <label>User ID (Reviewer):</label>
+            <input type="number" id="reviewUserId" placeholder="User ID" readonly>
+            <small>Auto-filled from Step 1</small>
+        </div>
+        
+        <div class="form-group">
+            <label>Rating (1-10):</label>
+            <input type="number" id="reviewRating" placeholder="Rating (1-10)" value="9" min="1" max="10">
+        </div>
+        
+        <div class="form-group">
+            <label>Comment:</label>
+            <textarea id="reviewComment" placeholder="Review Comment" rows="4">This is an absolutely fantastic game! The graphics are stunning, the gameplay is smooth and engaging, and the story is captivating. Highly recommended for all adventure game fans!</textarea>
+        </div>
+        
+        <button onclick="createReview()">Create Review</button>
+        <div id="reviewResult"></div>
+    </div>
+
+    <!-- Step 4: Display Review -->
+    <div class="section disabled" id="step4">
+        <h2><span class="step-number">4</span>Display Review</h2>
+        <div class="info">Fetch and display the complete review details.</div>
+        
+        <div class="form-group">
+            <label>Review ID:</label>
+            <input type="number" id="getReviewId" placeholder="Review ID" readonly>
+            <small>Auto-filled from Step 3</small>
+        </div>
+        
+        <button onclick="getReview()">Get Review Details</button>
+        <div id="getReviewResult"></div>
+    </div>
+
+    <!-- Step 5: Display Game with Review -->
+    <div class="section disabled" id="step5">
+        <h2><span class="step-number">5</span>Display Game Details</h2>
+        <div class="info">Fetch and display the complete game details.</div>
+        
+        <div class="form-group">
+            <label>Game ID:</label>
+            <input type="number" id="getGameId" placeholder="Game ID" readonly>
+            <small>Auto-filled from Step 2</small>
+        </div>
+        
+        <button onclick="getGame()">Get Game Details</button>
+        <div id="getGameResult"></div>
+    </div>
+
+    <script>
+        let authToken = '';
+        let userId = null;
+        let gameId = null;
+        let reviewId = null;
+
+        function getBaseUrl() {
+            return document.getElementById('baseUrl').value.replace(/\/$/, '');
+        }
+
+        function enableStep(stepNumber) {
+            document.getElementById(`step${stepNumber}`).classList.remove('disabled');
+        }
+
+        async function registerUser() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const resultDiv = document.getElementById('registerResult');
+
+            if (!username || !email || !password) {
+                resultDiv.innerHTML = '<p class="error">✗ Please fill all fields</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${getBaseUrl()}/seguranca/register/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    authToken = data.token;
+                    userId = data.user_id;
+                    
+                    // Fill in user ID for game and review
+                    document.getElementById('gameDeveloper').value = userId;
+                    document.getElementById('reviewUserId').value = userId;
+                    
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ User registered successfully!</p>
+                        <p><strong>User ID:</strong> ${data.user_id}</p>
+                        <p><strong>Username:</strong> ${data.username}</p>
+                        <p><strong>Token:</strong> ${data.token.substring(0, 20)}...</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                    
+                    enableStep(2);
+                } else {
+                    resultDiv.innerHTML = `<p class="error">✗ Error registering user</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function createGame() {
+            const resultDiv = document.getElementById('gameResult');
+            
+            const gameData = {
+                title: document.getElementById('gameTitle').value,
+                platforms: document.getElementById('gamePlatforms').value,
+                description: document.getElementById('gameDescription').value,
+                release_date: document.getElementById('gameReleaseDate').value,
+                developer: parseInt(document.getElementById('gameDeveloper').value)
+            };
+
+            try {
+                const response = await fetch(`${getBaseUrl()}/games/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Token ${authToken}`
+                    },
+                    body: JSON.stringify(gameData)
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    gameId = data.id;
+                    document.getElementById('reviewGameId').value = gameId;
+                    document.getElementById('getGameId').value = gameId;
+                    
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ Game created successfully!</p>
+                        <p><strong>Game ID:</strong> ${data.id}</p>
+                        <p><strong>Title:</strong> ${data.title}</p>
+                        <p><strong>Platforms:</strong> ${data.platforms}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                    
+                    enableStep(3);
+                } else {
+                    resultDiv.innerHTML = `<p class="error">✗ Error creating game</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function createReview() {
+            const resultDiv = document.getElementById('reviewResult');
+            
+            const reviewData = {
+                game: parseInt(document.getElementById('reviewGameId').value),
+                user: parseInt(document.getElementById('reviewUserId').value),
+                rating: parseInt(document.getElementById('reviewRating').value),
+                comment: document.getElementById('reviewComment').value
+            };
+
+            try {
+                const response = await fetch(`${getBaseUrl()}/reviews/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Token ${authToken}`
+                    },
+                    body: JSON.stringify(reviewData)
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    reviewId = data.id;
+                    document.getElementById('getReviewId').value = reviewId;
+                    
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ Review created successfully!</p>
+                        <p><strong>Review ID:</strong> ${data.id}</p>
+                        <p><strong>Rating:</strong> ${data.rating}/10</p>
+                        <p><strong>Comment:</strong> ${data.comment.substring(0, 100)}...</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                    
+                    enableStep(4);
+                    enableStep(5);
+                } else {
+                    resultDiv.innerHTML = `<p class="error">✗ Error creating review</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function getReview() {
+            const reviewId = document.getElementById('getReviewId').value;
+            const resultDiv = document.getElementById('getReviewResult');
+
+            try {
+                const response = await fetch(`${getBaseUrl()}/reviews/${reviewId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Token ${authToken}`
+                    }
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ Review retrieved successfully!</p>
+                        <h3>Review Details:</h3>
+                        <p><strong>Review ID:</strong> ${data.id}</p>
+                        <p><strong>Game ID:</strong> ${data.game}</p>
+                        <p><strong>User ID:</strong> ${data.user}</p>
+                        <p><strong>Rating:</strong> ${data.rating}/10</p>
+                        <p><strong>Comment:</strong> ${data.comment}</p>
+                        <p><strong>Created:</strong> ${data.created_at}</p>
+                        <h3>Complete JSON Response:</h3>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p class="error">✗ Error getting review</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function getGame() {
+            const gameId = document.getElementById('getGameId').value;
+            const resultDiv = document.getElementById('getGameResult');
+
+            try {
+                const response = await fetch(`${getBaseUrl()}/games/${gameId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Token ${authToken}`
+                    }
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✓ Game retrieved successfully!</p>
+                        <h3>Game Details:</h3>
+                        <p><strong>Game ID:</strong> ${data.id}</p>
+                        <p><strong>Title:</strong> ${data.title}</p>
+                        <p><strong>Platforms:</strong> ${data.platforms}</p>
+                        <p><strong>Description:</strong> ${data.description}</p>
+                        <p><strong>Release Date:</strong> ${data.release_date}</p>
+                        <p><strong>Developer ID:</strong> ${data.developer}</p>
+                        <h3>Complete JSON Response:</h3>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p class="error">✗ Error getting game</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">✗ Error: ${error.message}</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
