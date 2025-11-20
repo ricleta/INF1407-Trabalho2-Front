@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../api_resolver.js";
+import { navLinks } from "../navbar.js";
 /**
  * Main function that runs when the DOM is fully loaded.
  */
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultDiv = document.getElementById('result');
     // If user is already logged in, redirect them
     if (localStorage.getItem('authToken')) {
-        window.location.href = '/'; // Redirect to home page
+        window.location.href = navLinks.public.home.href; // Redirect to home page
         return;
     }
     loginForm.addEventListener('submit', async (event) => {
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resultDiv.innerHTML = `<p class="success">✓ Login bem-sucedido! Redirecionando...</p>`;
             // Redirect to the home page after a short delay
             setTimeout(() => {
-                window.location.href = '/'; // Or a user dashboard page
+                window.location.href = navLinks.public.home.href; // Or a user dashboard page
             }, 1500);
         }
         catch (error) {

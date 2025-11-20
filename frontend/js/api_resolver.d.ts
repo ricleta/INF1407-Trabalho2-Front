@@ -22,6 +22,13 @@ export interface Game {
     };
     reviews: Review[];
 }
+export interface User {
+    id: number;
+    username: string;
+    groups: {
+        name: string;
+    }[];
+}
 /**
  * A utility function to make authenticated API requests.
  * It retrieves the auth token from localStorage and adds it to the request headers.

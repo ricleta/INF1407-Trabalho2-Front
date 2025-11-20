@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
 </head>
 <body>
-    <nav>
-        <a href="{% url 'home-page' %}">Home-Page</a>
-        {% include 'Reviews/links.html' %}
-        {% include 'Games/links.html' %}
-        {% include 'Seguranca/links.html' %}
-    </nav>
+    <div id="navbar-container">
+        <!-- Navbar will be dynamically injected here -->
+        <nav>
+            <ul>
+                
+            </ul>
+        </nav>
+    </div>
 
     <h1>Criar Avaliação</h1>
     
@@ -31,5 +33,7 @@
             <button type="submit">Criar Avaliação</button>
         </fieldset>
     </form>
+
+    <script type="module" src="../../js/navbar.js"></script>
 </body>
 </html>

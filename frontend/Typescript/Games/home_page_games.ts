@@ -19,12 +19,6 @@ function formatDate(dateString: string): string {
 document.addEventListener('DOMContentLoaded', async () => {
     const gamesTableBody = document.getElementById('my-games-list') as HTMLTableSectionElement;
     const loadingMessage = document.getElementById('loading-message') as HTMLDivElement;
-    const authLinks = document.getElementById('auth-links') as HTMLSpanElement;
-
-    // Show authenticated links if token exists
-    if (localStorage.getItem('authToken')) {
-        authLinks.style.display = 'inline';
-    }
 
     loadingMessage.textContent = 'Carregando seus jogos...';
 

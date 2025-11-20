@@ -17,11 +17,6 @@ function formatDate(dateString) {
 document.addEventListener('DOMContentLoaded', async () => {
     const gamesTableBody = document.getElementById('my-games-list');
     const loadingMessage = document.getElementById('loading-message');
-    const authLinks = document.getElementById('auth-links');
-    // Show authenticated links if token exists
-    if (localStorage.getItem('authToken')) {
-        authLinks.style.display = 'inline';
-    }
     loadingMessage.textContent = 'Carregando seus jogos...';
     try {
         // Fetch games from an endpoint dedicated to the authenticated user's games.

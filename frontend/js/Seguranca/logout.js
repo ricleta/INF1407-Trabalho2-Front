@@ -1,3 +1,4 @@
+import { navLinks } from "../navbar.js";
 document.addEventListener('DOMContentLoaded', () => {
     const confirmButton = document.getElementById('confirm-logout');
     if (!confirmButton) {
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear the authentication token from local storage
         localStorage.removeItem('authToken');
         // Redirect to the home page after logging out
-        window.location.href = '/';
+        window.location.href = navLinks.public.home.href;
     });
 });
 //# sourceMappingURL=logout.js.map

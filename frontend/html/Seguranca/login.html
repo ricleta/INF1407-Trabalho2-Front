@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home-Page</a>
-        <a href="/games/lista">Todos os jogos</a>
-        <!-- Static auth links -->
-        <a href="/seguranca/login.html">Entrar</a>
-        <a href="/seguranca/signup.html">Cadastrar</a>
-    </nav>
+    <div id="navbar-container">
+        <!-- Navbar will be dynamically injected here -->
+        <nav>
+            <ul>
+                
+            </ul>
+        </nav>
+    </div>
     <h1>Login</h1>
     <form id="login-form">
         <fieldset style="width: max-content;">
@@ -33,5 +34,6 @@
     <p><a href="password_reset_form.html">Esqueceu a senha?</a></p>
 
     <script type="module" src="../../js/Seguranca/login.js"></script>
+    <script type="module" src="../../js/navbar.js"></script>
 </body>
 </html>

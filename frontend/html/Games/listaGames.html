@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home-Page</a>
-        <a href="/games/lista">Todos os jogos</a>
-        <!-- Dynamic links can be added here or in a shared script -->
-        <a href="/seguranca/login.html">Entrar</a>
-        <a href="/seguranca/signup.html">Cadastrar</a>
-    </nav>
+    <div id="navbar-container">
+        <!-- Navbar will be dynamically injected here -->
+        <nav>
+            <ul>
+                
+            </ul>
+        </nav>
+    </div>
     <h1>Lista de Jogos</h1>
     <table>
         <thead>
@@ -29,5 +30,6 @@
     </table>
     <div id="loading-message"></div>
     <script type="module" src="../../js/Games/listaGames.js"></script>
+    <script type="module" src="../../js/navbar.js"></script>
 </body>
 </html>

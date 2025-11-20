@@ -7,16 +7,14 @@
     <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
-    <nav>
-        <!-- Static links, dynamic ones will be handled by JS -->
-        <a href="/">Home-Page</a>
-        <a href="/games/lista">Todos os jogos</a>
-        <!-- Links for authenticated users can be shown/hidden with JS -->
-        <span id="auth-links" style="display: none;">
-            <a href="/games/mygames">Meus Jogos</a>
-            <a href="/games/criar">Criar Jogo</a>
-        </span>
-    </nav>
+    <div id="navbar-container">
+        <!-- Navbar will be dynamically injected here -->
+        <nav>
+            <ul>
+                
+            </ul>
+        </nav>
+    </div>
     <h1>Meus Jogos Cadastrados</h1>
     <table>
         <thead>
@@ -35,5 +33,6 @@
     <div id="loading-message"></div>
 
     <script type="module" src="../../js/Games/home_page_games.js"></script>
+    <script type="module" src="../../js/navbar.js"></script>
 </body>
 </html>

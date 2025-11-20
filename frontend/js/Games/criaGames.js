@@ -9,11 +9,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const gameForm = document.getElementById('game-form');
     const submitButton = document.getElementById('submit-button');
     const resultDiv = document.getElementById('result');
-    const authLinks = document.getElementById('auth-links');
-    // Show authenticated links if token exists
-    if (localStorage.getItem('authToken')) {
-        authLinks.style.display = 'inline';
-    }
     // --- Determine Mode: Create or Update ---
     const urlParams = new URLSearchParams(window.location.search);
     const gameId = urlParams.get('id');
@@ -55,17 +50,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             platforms: formData.get('platforms'),
             description: formData.get('description'),
             release_date: formData.get('release_date'),
-            // The developer should be set on the backend based on the authenticated user.
-            // Sending it from the frontend can be a security risk.
-            // If your API requires it, you'd get it from localStorage after login.
-            // developer: parseInt(localStorage.getItem('userId') || '0')
         };
         try {
             let response;
             if (isUpdateMode) {
                 // --- API call for UPDATE ---
                 response = await fetchWithAuth(`${API_BASE_URL}/games/${gameId}/`, {
-                    method: 'PUT', // or 'PATCH' if you allow partial updates
+                    method: 'PUT',
                     body: JSON.stringify(gameData),
                 });
             }
@@ -86,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             resultDiv.innerHTML = `<p class="success">✓ ${successMessage}</p>`;
             // Redirect to the game list after a short delay
             setTimeout(() => {
-                window.location.href = '/games/lista'; // Or the detail page: `/games/view.html?id=${responseData.id}`
+                window.location.href = '/html/Games/home_page_games.html'; // Or the detail page: `/games/view.html?id=${responseData.id}`
             }, 2000);
         }
         catch (error) {
