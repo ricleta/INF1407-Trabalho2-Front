@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Avaliações</title>
-    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+    <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
     <div id="navbar-container">
@@ -28,24 +27,12 @@
             <th>Data</th>
             <th>Ação</th>
         </tr>
-        {% for review in reviews %}
-            <tr>
-                <td>{{ review.game.title }}</td>
-                <td>{{ review.rating }}</td>
-                <td>{{ review.comment }}</td>
-                <td>{{ review.created_at|date:"d/m/Y H:i" }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{% url 'Reviews:atualiza-review' pk=review.id %}">Editar</a> |
-                    <a class="btn btn-danger" href="{% url 'Reviews:deleta-review' pk=review.id %}">Excluir</a>
-                </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <th colspan="5">Nenhuma avaliação cadastrada</th>
-            </tr>
-        {% endfor %}
+        <tbody id="reviews-table-body">
+            <!-- As avaliações serão inseridas aqui dinamicamente -->
+        </tbody>
     </table>
 
     <script type="module" src="../../js/navbar.js"></script>
+    <script type="module" src="../../js/Reviews/listaReviews.js"></script>
 </body>
 </html>

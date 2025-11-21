@@ -1,5 +1,5 @@
 import { API_BASE_URL } from "../api_resolver.js";
-import { navLinks } from "../navbar.js";
+import { navLinks } from "../routes.js";
 
 /**
  * Main function that runs when the DOM is fully loaded.

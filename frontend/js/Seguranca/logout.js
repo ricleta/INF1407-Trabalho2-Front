@@ -1,4 +1,4 @@
-import { navLinks } from "../navbar.js";
+import { navLinks } from "../routes.js";
 document.addEventListener('DOMContentLoaded', () => {
     const confirmButton = document.getElementById('confirm-logout');
     if (!confirmButton) {

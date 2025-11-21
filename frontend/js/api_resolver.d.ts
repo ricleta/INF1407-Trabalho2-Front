@@ -5,11 +5,15 @@
 export declare const API_BASE_URL = "https://organic-space-invention-4wvpj6q95q7hqwgw-8000.app.github.dev";
 export interface Review {
     id: number;
+    game: {
+        title: string;
+    };
     user: {
         username: string;
     };
     rating: number;
     comment: string;
+    created_at: string;
 }
 export interface Game {
     id: number;

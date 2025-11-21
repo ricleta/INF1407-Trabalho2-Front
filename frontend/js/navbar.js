@@ -1,22 +1,5 @@
 import { API_BASE_URL } from './api_resolver.js';
-export const navLinks = {
-    public: {
-        home: { text: 'Home', href: '/html/index.html' },
-        all_games: { text: 'Games', href: '/html/Games/listaGames.html' },
-    },
-    developer: {
-        my_games: { text: 'My Games', href: '/html/Games/home_page_games.html' },
-        create_game: { text: 'Create Game', href: '/html/Games/criaGames.html' },
-    },
-    reviewer: {
-        my_games: { text: 'My Reviews', href: '/html/ReviewslistaReviews.html' },
-    },
-    authActions: {
-        login: { text: 'Login', href: '/html/Seguranca/login.html' },
-        register: { text: 'Register', href: '/html/Seguranca/signup.html' },
-        logout: { text: 'Logout', href: '/html/Seguranca/logout.html' },
-    }
-};
+import { navLinks } from './routes.js';
 async function fetchCurrentUser() {
     const token = localStorage.getItem('authToken');
     if (!token)

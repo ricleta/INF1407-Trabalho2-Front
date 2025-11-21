@@ -1,23 +1,6 @@
-import { API_BASE_URL, User } from './api_resolver.js';
-
-export const navLinks = {
-    public: {
-        home: { text: 'Home', href: '/html/index.html' },
-        all_games: { text: 'Games', href: '/html/Games/listaGames.html' },
-    },
-    developer: {
-        my_games: { text: 'My Games', href: '/html/Games/home_page_games.html' },
-        create_game: { text: 'Create Game', href: '/html/Games/criaGames.html' },
-    },
-    reviewer: {
-        my_games: { text: 'My Reviews', href: '/html/ReviewslistaReviews.html' },
-    },
-    authActions: {
-        login: { text: 'Login', href: '/html/Seguranca/login.html' },
-        register: { text: 'Register', href: '/html/Seguranca/signup.html' },
-        logout: { text: 'Logout', href: '/html/Seguranca/logout.html' },
-    }
-};
+import { API_BASE_URL } from './api_resolver.js';
+import { navLinks } from './routes.js';
+import { User } from './api_resolver.js';
 
 async function fetchCurrentUser(): Promise<User | null> {
     const token = localStorage.getItem('authToken');
@@ -34,6 +17,7 @@ async function fetchCurrentUser(): Promise<User | null> {
         if (response.ok) {
             return await response.json();
         }
+
         // If token is invalid, clear it
         if (response.status === 401) {
             localStorage.removeItem('authToken');
@@ -45,7 +29,7 @@ async function fetchCurrentUser(): Promise<User | null> {
     }
 }
 
-function renderNavbar(user: User | null) {
+function renderNavbar(user: User | null): void {
     const navbarContainer = document.getElementById('navbar-container');
     if (!navbarContainer) return;
 

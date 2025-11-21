@@ -1,39 +1,50 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Avaliação</title>
-    <link rel="stylesheet" href="{% static 'Games/css/estilo.css' %}">
+    <title id="page-title">Criar Avaliação</title>
+    <link rel="stylesheet" href="../../css/estilo.css">
 </head>
 <body>
     <div id="navbar-container">
         <!-- Navbar will be dynamically injected here -->
         <nav>
             <ul>
-                
             </ul>
         </nav>
     </div>
 
-    <h1>Criar Avaliação</h1>
-    
-    {% if mensagem %}
-        <p>{{ mensagem }}</p>
-    {% endif %}
+    <h1 id="form-title">Criar Avaliação</h1>
 
-    <form action="" method="POST">
+    <div id="review-form-container">
+        <form id="review-form">
         <fieldset style="width: max-content;">
-            <legend>Nova Avaliação</legend>
-            {% csrf_token %}
-            <table class='form'>
-                {{ form.as_table }}
-            </table>
-            <button type="submit">Criar Avaliação</button>
+            <legend id="form-legend">Nova Avaliação</legend>
+                <p id="game-selector-container">
+                    <label for="game">Jogo:</label>
+                    <select id="game" name="game" required>
+                        <option>Carregando jogos...</option>
+                    </select>
+                </p>
+                <p id="game-display-container" style="display: none;">
+                    <label>Jogo:</label>
+                    <span id="game-display" style="font-weight: bold;"></span>
+                </p>
+                <p>
+                    <label for="rating">Nota (1-5):</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
+                </p>
+                <p>
+                    <label for="comment">Comentário:</label>
+                    <textarea id="comment" name="comment" rows="4" cols="50" required></textarea>
+                </p>
+            <button type="submit" id="submit-button">Criar Avaliação</button>
         </fieldset>
-    </form>
+        </form>
+    </div>
 
     <script type="module" src="../../js/navbar.js"></script>
+    <script type="module" src="../../js/Reviews/criaReview.js"></script>
 </body>
 </html>

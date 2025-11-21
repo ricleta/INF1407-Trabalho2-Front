@@ -7,9 +7,11 @@ export const API_BASE_URL = "https://organic-space-invention-4wvpj6q95q7hqwgw-80
 // Define the structure of your data for type safety.
 export interface Review {
     id: number;
+    game: { title: string };
     user: { username: string };
     rating: number;
     comment: string;
+    created_at: string;
 }
 
 export interface Game {
