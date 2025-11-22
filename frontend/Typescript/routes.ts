@@ -1,4 +1,4 @@
-const repoName = 'inf1407-trabalho2-front'; 
+const repoName = 'INF1407-Trabalho2-Front'; 
 const isGitHubPages = window.location.hostname.includes('github.io');
 const basePath = isGitHubPages ? `/${repoName}` : '';
 
