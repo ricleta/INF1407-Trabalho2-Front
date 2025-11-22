@@ -1,4 +1,5 @@
 import { API_BASE_URL, fetchWithAuth, Game } from "../api_resolver.js";
+import { navLinks } from "../routes.js";
 
 /**
  * Main function that runs when the DOM is fully loaded.
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Redirect to the game list after a short delay
             setTimeout(() => {
-                window.location.href = '/html/Games/home_page_games.html'; // Or the detail page: `/games/view.html?id=${responseData.id}`
+                window.location.href = navLinks.developer.my_games.href;
             }, 2000);
 
         } catch (error) {

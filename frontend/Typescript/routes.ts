@@ -14,6 +14,7 @@ export const navLinks = {
     reviewer: {
         my_reviews: { text: 'My Reviews', href: `${basePath}/Reviews/listaReviews.html` },
         create_review: { text: 'Create Review', href: `${basePath}/Reviews/criaReview.html` },
+        delete_review: { text: 'Delete Review', href: `${basePath}/Reviews/deletaReview.html` },
     },
     authActions: {
         login: { text: 'Login', href: `${basePath}/Seguranca/login.html` },

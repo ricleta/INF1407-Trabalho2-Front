@@ -38,7 +38,9 @@ function renderNavbar(user) {
             links.push(...Object.values(navLinks.developer));
         }
         if (isReviewer) {
-            links.push(...Object.values(navLinks.reviewer));
+            // Exclude the delete link from the main navigation
+            const reviewerNavs = Object.values(navLinks.reviewer).filter(link => link.text !== navLinks.reviewer.delete_review.text);
+            links.push(...reviewerNavs);
         }
         authLinks.push(navLinks.authActions.logout);
     }

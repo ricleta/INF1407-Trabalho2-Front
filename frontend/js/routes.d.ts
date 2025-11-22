@@ -28,6 +28,10 @@ export declare const navLinks: {
             text: string;
             href: string;
         };
+        delete_review: {
+            text: string;
+            href: string;
+        };
     };
     authActions: {
         login: {

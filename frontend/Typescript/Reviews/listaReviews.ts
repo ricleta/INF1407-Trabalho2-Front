@@ -1,4 +1,5 @@
 import { API_BASE_URL, fetchWithAuth, Review } from '../api_resolver.js';
+import { navLinks } from '../routes.js';
 
 /**
  * Fetches reviews for the currently logged-in user.
@@ -62,8 +63,8 @@ function renderReviews(reviews: Review[]): void {
             <td>${review.comment}</td>
             <td>${new Date(review.created_at).toLocaleDateString('pt-BR')}</td>
             <td>
-                <a class="btn btn-primary" href="/html/Reviews/criaReview.html?id=${review.id}">Editar</a> |
-                <a class="btn btn-danger" href="/html/Reviews/deletaReview.html?id=${review.id}">Excluir</a>
+                <a class="btn btn-primary" href="${navLinks.reviewer.create_review.href}?id=${review.id}">Editar</a> |
+                <a class="btn btn-danger" href="${navLinks.reviewer.delete_review.href}?id=${review.id}">Excluir</a>
             </td>
         `;
         tableBody.appendChild(row);
