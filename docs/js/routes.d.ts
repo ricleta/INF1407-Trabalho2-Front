@@ -1,7 +1,3 @@
-/**
- * Centralized navigation links for the entire application.
- * This ensures consistency and makes it easy to update routes.
- */
 export declare const navLinks: {
     public: {
         home: {
