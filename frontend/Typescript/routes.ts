@@ -4,7 +4,7 @@ const basePath = isGitHubPages ? `/${repoName}` : '';
 
 export const navLinks = {
     public: {
-        home: { text: 'Home', href: `${basePath}/index.html` },
+        home: { text: 'Home', href: isGitHubPages ? `${basePath}/` : `${basePath}/index.html` },
         all_games: { text: 'Games', href: `${basePath}/Games/listaGames.html` },
     },
     developer: {
