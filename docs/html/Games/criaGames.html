@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Criar Jogo</title>
+    <link rel="stylesheet" href="../../css/estilo.css">
+</head>
+<body>
+    <div id="navbar-container">
+        <!-- Navbar will be dynamically injected here -->
+        <nav>
+            <ul>
+                
+            </ul>
+        </nav>
+    </div>
+    
+    <h1 id="form-title">Criar um Jogo</h1>
+
+    <form id="game-form">
+        <fieldset style="width: max-content;">
+            <legend>Novo Jogo</legend>
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="platforms">Plataformas (separadas por vírgula):</label>
+                <input type="text" id="platforms" name="platforms" placeholder="PC, Xbox, PlayStation" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descrição:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="release_date">Data de Lançamento:</label>
+                <input type="date" id="release_date" name="release_date" required>
+            </div>
+            <button type="submit" id="submit-button">Criar Jogo</button>
+        </fieldset>
+    </form>
+    <div id="result"></div>
+
+    <script type="module" src="../../js/Games/criaGames.js"></script>
+    <script type="module" src="../../js/navbar.js"></script>
+</body>
+</html>
