@@ -1,4 +1,5 @@
 import { API_BASE_URL, fetchWithAuth, Game, Review } from "../api_resolver.js";
+import { navLinks } from "../routes.js";
 
 /**
  * Formats a date string from YYYY-MM-DD to DD/MM/YYYY.
@@ -48,8 +49,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td>${game.description}</td>
                 <td>${formatDate(game.release_date)}</td>
                 <td>
-                    <a href="criaGames.html?id=${game.id}">Editar</a> |
-                    <a href="deletaGames.html?id=${game.id}">Excluir</a>
+                    <a href="${navLinks.developer.create_game.href}?id=${game.id}">Editar</a> |
+                    <a href="${navLinks.developer.delete_game.href}?id=${game.id}">Excluir</a>
                 </td>
             `;
 

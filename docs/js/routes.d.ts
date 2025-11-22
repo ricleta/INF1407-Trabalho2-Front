@@ -18,6 +18,10 @@ export declare const navLinks: {
             text: string;
             href: string;
         };
+        delete_game: {
+            text: string;
+            href: string;
+        };
     };
     reviewer: {
         my_reviews: {

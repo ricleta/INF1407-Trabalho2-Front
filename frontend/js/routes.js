@@ -9,6 +9,7 @@ export const navLinks = {
     developer: {
         my_games: { text: 'My Games', href: `${basePath}/Games/home_page_games.html` },
         create_game: { text: 'Create Game', href: `${basePath}/Games/criaGames.html` },
+        delete_game: { text: 'Delete Game', href: `${basePath}/Games/deletaGames.html` },
     },
     reviewer: {
         my_reviews: { text: 'My Reviews', href: `${basePath}/Reviews/listaReviews.html` },

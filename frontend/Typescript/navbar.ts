@@ -41,7 +41,10 @@ function renderNavbar(user: User | null): void {
         const isReviewer = user.groups.some(g => g.name.toLowerCase() === 'reviewer');
 
         if (isDeveloper) {
-            links.push(...Object.values(navLinks.developer));
+            const developerNavs = Object.values(navLinks.developer).filter(
+                link => link.text !== navLinks.developer.delete_game.text
+            );
+            links.push(...developerNavs);
         }
         if (isReviewer) {
             // Exclude the delete link from the main navigation
