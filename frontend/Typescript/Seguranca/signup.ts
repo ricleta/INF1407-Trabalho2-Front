@@ -1,5 +1,4 @@
-// --- Configuration ---
-const API_BASE_URL = "https://organic-space-invention-4wvpj6q95q7hqwgw-8000.app.github.dev";
+import { API_BASE_URL } from '../api_resolver.js';
 
 /**
  * Main function that runs when the DOM is fully loaded.

@@ -2,7 +2,7 @@
  * Base URL for all API requests.
  * Centralizing this makes it easy to update if the backend URL changes.
  */
-export const API_BASE_URL = "https://organic-space-invention-4wvpj6q95q7hqwgw-8000.app.github.dev";
+export const API_BASE_URL = "https://ricleta.pythonanywhere.com";
 /**
  * A utility function to make authenticated API requests.
  * It retrieves the auth token from localStorage and adds it to the request headers.
