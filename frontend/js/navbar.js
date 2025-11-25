@@ -43,7 +43,7 @@ function renderNavbar(user) {
             const reviewerNavs = Object.values(navLinks.reviewer).filter(link => link.text !== navLinks.reviewer.delete_review.text);
             links.push(...reviewerNavs);
         }
-        authLinks.push(navLinks.authActions.logout);
+        authLinks.push(navLinks.authActions.logout, navLinks.authActions.change_password);
     }
     else {
         authLinks.push(navLinks.authActions.login, navLinks.authActions.register);

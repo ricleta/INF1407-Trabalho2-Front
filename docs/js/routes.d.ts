@@ -42,6 +42,10 @@ export declare const navLinks: {
             text: string;
             href: string;
         };
+        change_password: {
+            text: string;
+            href: string;
+        };
         register: {
             text: string;
             href: string;

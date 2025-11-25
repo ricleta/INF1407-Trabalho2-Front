@@ -1,8 +1,4 @@
-/**
- * Base URL for all API requests.
- * Centralizing this makes it easy to update if the backend URL changes.
- */
-export declare const API_BASE_URL = "https://ricleta.pythonanywhere.com";
+export declare const API_BASE_URL: string;
 export interface Review {
     id: number;
     game: {

@@ -2,7 +2,10 @@
  * Base URL for all API requests.
  * Centralizing this makes it easy to update if the backend URL changes.
  */
-export const API_BASE_URL = "https://ricleta.pythonanywhere.com";
+const isGitHubPages = window.location.hostname.includes('github.io');
+const codespace_name = 'https://organic-space-invention-4wvpj6q95q7hqwgw-8000.app.github.dev';
+const actual_backend = 'https://ricleta.pythonanywhere.com';
+export const API_BASE_URL = isGitHubPages ? actual_backend : codespace_name;
 /**
  * A utility function to make authenticated API requests.
  * It retrieves the auth token from localStorage and adds it to the request headers.

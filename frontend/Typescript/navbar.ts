@@ -53,7 +53,7 @@ function renderNavbar(user: User | null): void {
             );
             links.push(...reviewerNavs);
         }
-        authLinks.push(navLinks.authActions.logout);
+        authLinks.push(navLinks.authActions.logout, navLinks.authActions.change_password);
     } else {
         authLinks.push(navLinks.authActions.login, navLinks.authActions.register);
     }

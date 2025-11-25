@@ -18,6 +18,7 @@ export const navLinks = {
     },
     authActions: {
         login: { text: 'Login', href: `${basePath}/Seguranca/login.html` },
+        change_password: { text: 'Change Password', href: `${basePath}/Seguranca/change_password.html` },
         register: { text: 'Register', href: `${basePath}/Seguranca/signup.html` },
         logout: { text: 'Logout', href: `${basePath}/Seguranca/logout.html` },
     }
