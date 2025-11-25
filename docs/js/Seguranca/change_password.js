@@ -45,8 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- Success ---
             // The API returns a new token upon successful password change.
             localStorage.setItem('authToken', data.token);
-            resultDiv.innerHTML = `<p class="success">✓ Password changed successfully! </p>`;
-            window.location.href = navLinks.public.home.href;
+            resultDiv.innerHTML = `<p class="success">✓ Password changed successfully! Please log in again.</p>`;
+            // For security, log the user out and redirect to the login page after a short delay.
+            setTimeout(() => {
+                localStorage.removeItem('authToken'); // Ensure old session is cleared
+                window.location.href = navLinks.authActions.login.href;
+            }, 2500);
         }
         catch (error) {
             const message = error instanceof Error ? error.message : "An unknown error occurred.";
