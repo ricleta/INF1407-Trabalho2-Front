@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     changePasswordForm.addEventListener('submit', async (event) => {
         event.preventDefault();
+        submitButton.disabled = true;
         resultDiv.textContent = 'Sending reset email...';
 
         const formData = new FormData(changePasswordForm);
