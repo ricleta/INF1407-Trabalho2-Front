@@ -29,10 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(errorMessage);
             }
             // --- Success ---
-            resultDiv.innerHTML = `<p class="success">✓ A reset email has been sent if the email exists in our system.</p>`;
-            window.setTimeout(() => {
+            const temporaryPassword = data.temporary_password;
+            if (temporaryPassword) {
+                resultDiv.innerHTML = `<p class="success">✓ Your temporary password has been generated. Please use it to log in.</p>`;
+                alert(`Your new password is: ${temporaryPassword}`);
                 window.location.href = navLinks.authActions.login.href;
-            }, 3000);
+            }
         }
         catch (error) {
             resultDiv.innerHTML = `<p class="error">✗ ${error.message}</p>`;
