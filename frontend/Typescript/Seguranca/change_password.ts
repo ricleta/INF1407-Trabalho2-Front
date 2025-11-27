@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 // Handle errors from the API, e.g., incorrect old password
-                const errorMessage = data.old_password?.[0] || data.error || 'An unknown error occurred.';
+                const errorMessage = (data.error && Array.isArray(data.error) ? data.error[0] : data.error) || data.old_password?.[0] || 'An unknown error occurred.';
                 throw new Error(errorMessage);
             }
 
