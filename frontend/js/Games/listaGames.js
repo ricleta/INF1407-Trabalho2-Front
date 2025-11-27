@@ -53,32 +53,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             // 2. Create the Reviews row (if reviews exist)
             if (game.reviews && game.reviews.length > 0) {
                 const reviewsRow = gamesTableBody.insertRow();
-                reviewsRow.classList.add('reviews-row'); // Add class for potential styling
+                reviewsRow.classList.add('reviews-row');
                 const cell = reviewsRow.insertCell();
-                cell.colSpan = 5; // Span across all 5 columns of the main table
-                // Build the nested table HTML
+                cell.colSpan = 5; // Span across all columns
                 cell.innerHTML = `
-                    <div style="margin: 10px 20px; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
-                        <h4 style="margin-top: 0;">Avaliações:</h4>
-                        <table class="reviews-table" style="width: 100%; border-collapse: collapse;">
-                            <thead>
-                                <tr style="background-color: #e9ecef;">
-                                    <th style="padding: 5px;">Usuário</th>
-                                    <th style="padding: 5px;">Nota</th>
-                                    <th style="padding: 5px;">Comentário</th>
+                    <h4>Avaliações para ${game.title}</h4>
+                    <table class="reviews-table">
+                        <thead><tr><th>Usuário</th><th>Nota</th><th>Comentário</th></tr></thead>
+                        <tbody>
+                            ${game.reviews.map(review => `
+                                <tr>
+                                    <td>${review.user.username}</td>
+                                    <td>${review.rating}</td>
+                                    <td>${review.comment}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                ${game.reviews.map(review => `
-                                    <tr>
-                                        <td style="padding: 5px; border-bottom: 1px solid #ddd;">${review.user.username}</td>
-                                        <td style="padding: 5px; border-bottom: 1px solid #ddd;">${review.rating}</td>
-                                        <td style="padding: 5px; border-bottom: 1px solid #ddd;">${review.comment}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
+                            `).join('')}
+                        </tbody>
+                    </table>
                 `;
             }
         });
