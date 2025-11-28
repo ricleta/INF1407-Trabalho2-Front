@@ -80,13 +80,15 @@ No menu "Register", crie uma conta escolhendo o perfil:
 ## Imagens do Sistema
 
 1.  **Página de Login:**
-    *(Inserir imagem da tela de login)*
+    <img width="1074" height="1046" alt="image" src="https://github.com/user-attachments/assets/f89accf0-b857-4537-8dcb-bb8d3746d9d6" />
 
-2.  **Listagem de Jogos (Home):**
-    *(Inserir imagem da listagem de jogos)*
+2.  **Listagem de Jogos (Games):**
+    <img width="3783" height="1804" alt="image" src="https://github.com/user-attachments/assets/b5ea46ee-c8ea-4635-88eb-cfcc74aeaed1" />
+
 
 3.  **Criação de Avaliação:**
-    *(Inserir imagem do formulário de avaliação)*
+    <img width="1793" height="1371" alt="image" src="https://github.com/user-attachments/assets/7bfc829d-2a6d-4f11-af32-facebb19da4f" />
+
 
 ---
 
@@ -98,13 +100,6 @@ No menu "Register", crie uma conta escolhendo o perfil:
 * **UX Dinâmica:** A barra de navegação (`navbar.js`) se adapta corretamente, mostrando ou escondendo links baseados no grupo do usuário logado.
 
 ### O que não funcionou
-* **Feedback de Erros: (Possivelmente alterar)** Algumas mensagens de erro vindas da API (como JSON bruto) são exibidas diretamente ao usuário em casos de falha na validação, o que não é esteticamente ideal.
+* **Feedback de Erros:** Algumas mensagens de erro vindas da API (como JSON bruto) são exibidas diretamente ao usuário em casos de falha na validação, o que não é esteticamente ideal.
 
 ---
-
-## Critérios Atendidos (Frontend)
-* [x] Site HTML/CSS/JS (TypeScript).
-* [x] Uso de Git e Repositório Público.
-* [x] Consumo de API REST (CRUD).
-* [x] Login e ações por usuário/grupo.
-* [x] Gerência de Senha (telas de solicitação e troca).
