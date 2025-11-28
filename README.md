@@ -21,7 +21,7 @@ Este repositório contém o **Front-end** do Trabalho 2 de Programação para We
 
 O frontend funciona como uma aplicação cliente que interage com o servidor via requisições AJAX (`fetch`).
 
-* [cite_start]**Tecnologias:** HTML5, CSS3 e TypeScript[cite: 34].
+* **Tecnologias:** HTML5, CSS3 e TypeScript.
 * **Arquitetura:** SPA (Simulada) - As páginas são arquivos HTML separados, mas compartilham módulos TypeScript para lógica e navegação.
 * **Funcionalidades:**
     * Interface de Login/Cadastro.
